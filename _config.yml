@@ -1,11 +1,11 @@
 # Setup
-title: Dutch Data Dude - Data Nerdiness
+title: Dutch Data Dude
 email: jeroen@dutchdatadude.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is the personal blog of Jeroen ter Heerdt, Program Manager at Microsoft in Redmond.
 twitter_username: jeroenterheerdt
 github_username:  jeroenterheerdt
-tagline:             'Dutch Data Dude - Data Nerdiness'
+tagline:             'Data Nerdiness'
 url:                 https://jeroenterheerdt.github.io/dutchdatadude-blog/
 baseurl:             ''
 paginate:            5
