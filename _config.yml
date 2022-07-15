@@ -1,0 +1,26 @@
+# Setup
+title: Dutch Data Dude - Data Nerdiness
+email: jeroen@dutchdatadude.com
+description: >- # this means to ignore newlines until "baseurl:"
+  This is the personal blog of Jeroen ter Heerdt, Program Manager at Microsoft in Redmond.
+twitter_username: jeroenterheerdt
+github_username:  jeroenterheerdt
+tagline:             'Dutch Data Dude - Data Nerdiness'
+url:                 https://jeroenterheerdt.github.io/dutchdatadude-blog/
+baseurl:             ''
+paginate:            5
+permalink:           pretty
+
+# About/contact
+author:
+  name:              Jeroen ter Heerdt
+  url:               https://twitter.com/jeroenterheerdt
+  email:             jeroen@dutchdatadude.com
+
+# Gems
+plugins:
+  - jekyll-paginate
+
+# Custom vars
+version:             1.1.0
+google_analytics_id: #UA-XXXX-Y

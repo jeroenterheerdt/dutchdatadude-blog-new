@@ -1,0 +1,78 @@
+TotalAmount = SUM(Sales[Amount])
+TotalQuantity = SUM(Sales[Quantity])
+Amount_LastDay = CALCULATE([TotalAmount],PREVIOUSDAY('Date'[Date]))
+Amount_SameDayLastYear = CALCULATE([TotalAmount],SAMEPERIODLASTYEAR('Date'[Date]))
+Amount_DOD_Variance = [TotalAmount]-[Amount_LastDay]
+Amount_DOD_Variance% = DIVIDE([Amount_DOD_Variance],[Amount_LastDay])
+Amount_YOY_Variance = [TotalAmount]-[Amount_SameDayLastYear]
+Amount_YOY_Variance% = DIVIDE([Amount_YOY_Variance],[Amount_LastDay])
+Quantity_LastDay = CALCULATE([TotalQuantity],PREVIOUSDAY('Date'[Date]))
+Quantity_SameDayLastYear = CALCULATE([TotalQuantity],SAMEPERIODLASTYEAR('Date'[Date]))
+Quantity_DOD_Variance = [TotalQuantity]-[Quantity_LastDay]
+Quantity_DOD_Variance% = DIVIDE([Quantity_DOD_Variance],[Quantity_LastDay])
+Quantity_YOY_Variance = [TotalQuantity]-[Quantity_SameDayLastYear]
+Quantity_YOY_Variance% = DIVIDE([Quantity_YOY_Variance],[Quantity_LastDay])
+Amount_WTD = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[WeekNumber] ), CALCULATE( [TotalAmount], FILTER ( ALL ( 'Date' ), 'Date'[Year] = VALUES ( 'Date'[Year] ) && 'Date'[WeekNumber] = VALUES ( 'Date'[WeekNumber] ) && 'Date'[Date] <= MAX ( 'Date'[Date] ))))
+Amount_LastWeek = SUMX(FILTER(ALL('Date'),IF(SELECTEDVALUE('Date'[WeekNumber])=1,'Date'[WeekNumber]=CALCULATE(MAX('Date'[WeekNumber]), ALL('Date')) && 'Date'[Year]=FORMAT(VALUE(SELECTEDVALUE('Date'[Year]))-1,""),'Date'[WeekNumber]=SELECTEDVALUE('Date'[WeekNumber])-1 && 'Date'[Year]=FORMAT(VALUE(SELECTEDVALUE('Date'[Year])),""))),[TotalAmount])
+Amount_SameWeekLastYear = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[WeekNumber] ), CALCULATE( SUM ( Sales[Amount] ), FILTER (ALL ( 'Date' ),'Date'[Year] = FORMAT(VALUES ( 'Date'[Year] )-1,"") && 'Date'[WeekNumber] = VALUES ( 'Date'[WeekNumber] ) && 'Date'[Date] <= MAX ( 'Date'[Date] )))
+Amount_WTD_WOW_Variance = [Amount_WTD]-[Amount_LastWeek]
+Amount_WTD_WOW_Variance% = DIVIDE([Amount_WTD_WOW_Variance],[Amount_LastWeek])
+Amount_WTD_YOY_Variance = [Amount_WTD]-[Amount_SameWeekLastYear]
+Amount_WTD_YOY_Variance% = DIVIDE([Amount_WTD_YOY_Variance],[Amount_SameWeekLastYear])
+Quantity_WTD = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[WeekNumber] ), CALCULATE ( [TotalQuantity], FILTER (ALL ( 'Date' ),'Date'[Year] = VALUES ( 'Date'[Year] ) && 'Date'[WeekNumber] = VALUES ( 'Date'[WeekNumber] ) && 'Date'[Date] <= MAX ( 'Date'[Date] ))),BLANK ())
+Quantity_SameWeekLastYear = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[WeekNumber] ), CALCULATE(SUM ( Sales[Quantity] ),FILTER (ALL ( 'Date' ),'Date'[Year] = FORMAT(VALUES ( 'Date'[Year] )-1,"") && 'Date'[WeekNumber] = VALUES ( 'Date'[WeekNumber] ) && 'Date'[Date] <= MAX ( 'Date'[Date] ))))
+Quantity_LastWeek = SUMX(FILTER(ALL('Date'), IF(SELECTEDVALUE('Date'[WeekNumber])=1,'Date'[WeekNumber]=CALCULATE(MAX('Date'[WeekNumber]), ALL('Date')) && 'Date'[Year]=FORMAT(VALUE(SELECTEDVALUE('Date'[Year]))-1,""),'Date'[WeekNumber]=SELECTEDVALUE('Date'[WeekNumber])-1 && 'Date'[Year]=FORMAT(VALUE(SELECTEDVALUE('Date'[Year])),""))),[TotalQuantity])
+Quantity_WTD_WOW_Variance = [Quantity_WTD]-[Quantity_LastWeek]
+Quantity_WTD_WOW_Variance% = DIVIDE([Quantity_WTD_WOW_Variance],[Quantity_LastWeek])
+Quantity_WTD_YOY_Variance = [Quantity_WTD]-[Quantity_SameWeekLastYear]
+Quantity_WTD_YOY_Variance% = DIVIDE([Quantity_WTD_YOY_Variance],[Quantity_SameWeekLastYear])
+Amount_MTD = TOTALMTD([TotalAmount],'Date'[Date])
+Amount_SameMonthLastYear = CALCULATE([Amount_MTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Amount_LastMonth = CALCULATE([TotalAmount],PREVIOUSMONTH('Date'[Date]))
+Amount_MTD_MOM_Variance = [Amount_MTD]-[Amount_LastMonth]
+Amount_MTD_MOM_Variance% = DIVIDE([Amount_MTD_MOM_Variance],[Amount_LastMonth])
+Amount_MTD_YOY_Variance = [Amount_MTD]-[Amount_SameMonthLastYear]
+Amount_MTD_YOY_Variance% = DIVIDE([Amount_MTD_YOY_Variance],[Amount_SameMonthLastYear])
+Quantity_MTD = TOTALMTD([TotalQuantity],'Date'[Date])
+Quantity_SameMonthLastYear = CALCULATE([Quantity_MTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Quantity_LastMonth = CALCULATE([TotalQuantity],PREVIOUSMONTH('Date'[Date]))
+Quantity_MTD_MOM_Variance = [Quantity_MTD]-[Quantity_LastMonth]
+Quantity_MTD_MOM_Variance% = DIVIDE([Quantity_MTD_MOM_Variance],[Quantity_LastMonth])
+Quantity_MTD_YOY_Variance = [Quantity_MTD]-[Quantity_SameMonthLastYear]
+Quantity_MTD_YOY_Variance% = DIVIDE([Quantity_MTD_YOY_Variance],[Quantity_SameMonthLastYear])
+Amount_PTD = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[TwoMonthPeriod] ),CALCULATE ([TotalAmount],FILTER (ALL ( 'Date' ),'Date'[Year] = VALUES ( 'Date'[Year] )&& 'Date'[TwoMonthPeriod] = VALUES ( 'Date'[TwoMonthPeriod] )&& 'Date'[Date] <= MAX ( 'Date'[Date] ))),BLANK ())
+Amount_SamePeriodLastYear = CALCULATE([Amount_PTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Amount_LastPeriod = CALCULATE([TotalAmount],DATEADD('Date'[Date],-2,MONTH))
+Amount_PTD_POP_Variance = [Amount_PTD]-[Amount_LastPeriod]
+Amount_PTD_POP_Variance% = DIVIDE([Amount_PTD_POP_Variance],[Amount_LastPeriod])
+Amount_PTD_YOY_Variance = [Amount_PTD]-[Amount_SamePeriodLastYear]
+Amount_PTD_YOY_Variance% = DIVIDE([Amount_PTD_YOY_Variance],[Amount_SamePeriodLastYear])
+Quantity_PTD = IF (HASONEVALUE ( 'Date'[Year] ) && HASONEVALUE ('Date'[TwoMonthPeriod] ),CALCULATE ([TotalQuantity],FILTER (ALL ( 'Date' ),'Date'[Year] = VALUES ( 'Date'[Year] ) && 'Date'[TwoMonthPeriod] = VALUES ( 'Date'[TwoMonthPeriod] ) && 'Date'[Date] <= MAX ( 'Date'[Date] ))),BLANK ())
+Quantity_SamePeriodLastYear = CALCULATE([Quantity_PTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Quantity_LastPeriod = CALCULATE([TotalQuantity],DATEADD('Date'[Date],-2,MONTH))
+Quantity_PTD_POP_Variance = [Quantity_PTD]-[Quantity_LastPeriod]
+Quantity_PTD_POP_Variance% = DIVIDE([Quantity_PTD_POP_Variance],[Quantity_LastPeriod])
+Quantity_PTD_YOY_Variance = [Quantity_PTD]-[Quantity_SamePeriodLastYear]
+Quantity_PTD_YOY_Variance% = DIVIDE([Quantity_PTD_YOY_Variance],[Quantity_SamePeriodLastYear])
+Amount_QTD = TOTALQTD([TotalAmount],'Date'[Date])
+Amount_SameQuarterLastYear = CALCULATE([Amount_QTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Amount_LastQuarter = CALCULATE([TotalAmount],PREVIOUSQUARTER('Date'[Date]))
+Amount_QTD_QOQ_Variance = [Amount_QTD]-[Amount_LastQuarter]
+Amount_QTD_QOQ_Variance% = DIVIDE([Amount_QTD_QOQ_Variance],[Amount_LastQuarter])
+Amount_QTD_YOY_Variance = [Amount_QTD]-[Amount_SameQuarterLastYear]
+Amount_QTD_YOY_Variance% = DIVIDE([Amount_QTD_YOY_Variance],[Amount_SameQuarterLastYear])
+Quantity_QTD = TOTALQTD([TotalQuantity],'Date'[Date])
+Quantity_SameQuarterLastYear = CALCULATE([Quantity_QTD],SAMEPERIODLASTYEAR('Date'[Date]))
+Quantity_LastQuarter = CALCULATE([TotalQuantity],PREVIOUSQUARTER('Date'[Date]))
+Quantity_QTD_QOQ_Variance = [Quantity_QTD]-[Quantity_LastQuarter]
+Quantity_QTD_QOQ_Variance% = DIVIDE([Quantity_QTD_QOQ_Variance],[Quantity_LastQuarter])
+Quantity_QTD_YOY_Variance = [Quantity_QTD]-[Quantity_SameQuarterLastYear]
+Quantity_QTD_YOY_Variance% = DIVIDE([Quantity_QTD_YOY_Variance],[Quantity_SameQuarterLastYear])
+Amount_YTD = TOTALYTD([TotalAmount],'Date'[Date])
+Amount_LastYear = CALCULATE([Amount_YTD],PREVIOUSYEAR('Date'[Date]))
+Amount_YTD_YOY_Variance = [Amount_YTD]-[Amount_LastYear]
+Amount_YTD_YOY_Variance% = DIVIDE([Amount_YTD_YOY_Variance],[Amount_LastYear])
+Quantity_YTD = TOTALYTD([TotalQuantity],'Date'[Date])
+Quantity_LastYear = CALCULATE([TotalQuantity],PREVIOUSYEAR('Date'[Date]))
+Quantity_YTD_YOY_Variance = -[Quantity_YTD]-[Quantity_LastYear]
+Quantity_YTD_YOY_Variance% = DIVIDE([Quantity_YTD_YOY_Variance],[Quantity_LastYear])
