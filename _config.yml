@@ -24,3 +24,20 @@ plugins:
 # Custom vars
 version:             1.1.0
 google_analytics_id: #UA-XXXX-Y
+
+# Code syntax highlighting:
+markdown: kramdown
+highlighter: rouge
+
+# Disqus comments:
+disqus:
+  shortname: dutchdatadude
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true   # change to false to default to comments off site-wide

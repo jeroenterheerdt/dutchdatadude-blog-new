@@ -87,9 +87,9 @@ tags:
 <!-- /wp:paragraph -->
 
 <!-- wp:preformatted -->
-{% comment %}
+{% highlight powershell linenos %}
   {% raw %}
-<pre class="wp-block-preformatted">let
+let
 Source = Sql.Databases(myserver),
 AdventureWorksDW2017 = Source{[Name="AdventureWorksDW2017"]}[Data],
 dbo_FactInternetSales = AdventureWorksDW2017{[Schema="dbo",Item="FactInternetSales"]}[Data],
@@ -104,9 +104,9 @@ dbo_FactInternetSales = AdventureWorksDW2017{[Schema="dbo",Item="FactInternetSal
 #"Changed Type" = Table.TransformColumnTypes(#"Grouped Rows",{{"FactInternetSalesCount", Int64.Type}, {"SalesAmount.1", type number}}),
 #"Renamed Columns3" = Table.RenameColumns(#"Changed Type",{{"SalesAmount.1", "SalesAmount"}, {"DimDate(OrderDateKey).CalendarQuarter", "Quarter"}, {"DimDate(OrderDateKey).EnglishMonthName", "Month"}, {"DimDate(OrderDateKey).CalendarYear", "Year"}})
 in
-#"Renamed Columns3"</pre>
+#"Renamed Columns3"
   {% endraw %}
-{% endcomment %}
+{% endhighlight %}
 <!-- /wp:preformatted -->
 
 <!-- wp:heading {"level":3} -->

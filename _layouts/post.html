@@ -25,3 +25,7 @@ layout: default
   </ul>
 </div>
 {% endif %}
+
+{% if page.comments == true and site.disqus.shortname %}
+{% include disqus.html %}
+{% endif %}

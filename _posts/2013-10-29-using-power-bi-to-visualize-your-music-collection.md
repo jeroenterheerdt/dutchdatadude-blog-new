@@ -17,6 +17,7 @@ tags:
     - 'power view'
 ---
 
+<strong>Disclaimer: this post was written before I learned that pie charts are bad.</strong>
 As some of you might recall, I have been talking about visualizing digital music collections using Microsoft tools. It all started back in the days of Pivot Viewer (At some point I was even part of a lustrous duo called 'the Pivot Brothers').
 Now, with Power BI being just around the corner I started thinking about taking on this old habit again. Here it goes…
 
@@ -145,10 +146,9 @@ Rename the column to Cover.
 
 Now we're done transforming the data. The steps you performed form a script, which you can see by clicking on the title scroll icon at the formula bar. Here is my script:
 
-{% comment %}
-  {% raw %}
-
-<pre class="lang:sh decode:true">let
+{% highlight powershell linenos %}
+{% raw %}
+let
 Source = Table.FromColumns({Lines.FromBinary(File.Contents("C:\mp3tag.csv"))}),
 SplitColumnDelimiter = Table.SplitColumn(Source,"Column1",Splitter.SplitTextByDelimiter(";"),18),
 FirstRowAsHeader = Table.PromoteHeaders(SplitColumnDelimiter),
@@ -165,10 +165,10 @@ RenamedColumns1 = Table.RenameColumns(InsertedCustom1,{{"Custom", "Cover"}}),
 FilteredRows = Table.SelectRows(RenamedColumns1, each ([Artist] &lt;&gt; null)),
 ChangedType3 = Table.TransformColumnTypes(FilteredRows,{{"Year", type number}})
 in
-ChangedType3</pre>
+ChangedType3
+{% endraw %}
+{% endhighlight %}
 
-  {% endraw %}
-{% endcomment %}
 As you can see every little step we took is represented in the script.
 
 Now click 'Done' to get the transformed data in Excel, where we will start on the visualization.

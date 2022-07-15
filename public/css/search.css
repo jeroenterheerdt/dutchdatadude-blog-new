@@ -1,0 +1,13 @@
+/* Search results css */
+ul#results-container {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  #results-container li {
+    margin-bottom: 1.5rem;
+  }
+  
+  span.post-meta {
+    font-size: 0.5rem;
+  }
