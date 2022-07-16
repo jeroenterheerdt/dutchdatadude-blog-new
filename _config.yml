@@ -6,7 +6,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 twitter_username: jeroenterheerdt
 github_username:  jeroenterheerdt
 tagline:             'Data Nerdiness'
-url:                 http://www.dutchdatadude.com
+url:                 https://www.dutchdatadude.com
 baseurl:             ''
 paginate:            5
 permalink:           pretty
