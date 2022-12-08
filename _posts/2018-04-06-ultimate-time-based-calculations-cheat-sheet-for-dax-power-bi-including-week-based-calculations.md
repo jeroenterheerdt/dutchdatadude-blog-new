@@ -33,7 +33,7 @@ tags:
 
 Power BI provides great time intelligence features to calculate Year-to-date (YTD), Month-to-date (MTD) and Quarter-to-date (QTD) totals. There is no such thing as Week-to-date (WTD) or Period-to-date (PTD) where period could be any arbitrary period definition (I used two-month periods in my example below). If you want those, you will have to create the calculations yourself. I was inspired by<a href="https://www.sqlbi.com/articles/week-based-time-intelligence-in-dax/"> this excellent blog post</a> and created an ultimate time-intelligence calculations Power BI file. I used <a href="https://www.mattmasson.com/2014/02/creating-a-date-dimension-with-a-power-query-script/">Matt Massons excellent date dimension generation script</a> to generate the date table for my example.
 
-<a href="https://wp.me/a3AIGJ-1aO">Download the full Power BI file here</a> or <a href="https://wp.me/a3AIGJ-1aM">get just the DAX formulas</a>. Enjoy!
+<a href="https://github.com/jeroenterheerdt/dutchdatadude/blob/master/ultimate-time-based-calculations-cheat-sheet-for-dax-power-bi-including-week-based-calculations/TimeIntelligence.pbix">Download the full Power BI file here</a> or <a href="../wp-content/uploads/2018/04/DutchDataDude-TimeIntelligence.txt">get just the DAX formulas</a>. Enjoy!
 
 <strong>Basic Measures</strong>
 
