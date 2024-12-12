@@ -12,5 +12,5 @@ guid: 'http://www.dutchdatadude.com/?page_id=7593'
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
-<p>Dutch Data Dude == Jeroen ter Heerdt. Jeroen is a Program Manager at Microsoft in Redmond, working on super-secret data stuff. Jeroen is passionate about "all things data" and always happy to talk - find me on <a href="https://www.linkedin.com/in/jeroenterheerdt">LinkedIn </a>or <a href="https://twitter.com/jeroenterheerdt">Twitter</a>.</p>
+<p>Dutch Data Dude == Jeroen ter Heerdt. Jeroen is a Program Manager at Microsoft in Redmond, working on super-secret data stuff. Jeroen is passionate about "all things data" and always happy to talk - find me on <a href="https://www.linkedin.com/in/jeroenterheerdt">LinkedIn </a>or <a href="https://bsky.app/profile/jaypowerbi.bsky.social">BlueSky</a>.</p>
 <!-- /wp:paragraph -->
