@@ -11,4 +11,5 @@ Anyway, enter [Twitoso](https://github.com/jeroenterheerdt/twitoso): a simple Py
 
 This is very basic and could be more intelligent, but it saved me a ton of time - hope it helps you as well. 
 
-I will be on Twitter for the foreseeable future, but you can now also find me on [Counter.social](http://counter.social/) as [@jaypowerbi](https://counter.social/web/accounts/135348#).
+~I will be on Twitter for the foreseeable future, but you can now also find me on [Counter.social](http://counter.social/) as [@jaypowerbi](https://counter.social/web/accounts/135348#).~
+Update: I am no longer on Twitter but on BlueSky: https://bsky.app/profile/jaypowerbi.bsky.social
